@@ -3,80 +3,31 @@ import path from 'node:path'
 import pc from 'picocolors'
 import { question } from 'readline-sync'
 
-import { FileError } from './errors.js'
 import { DATAFILES, IGNORE, SOURCES, MONTHS, MULTIMEDIA, REGEX } from './consts.js'
-
-async function loadDDBB(datafiles = DATAFILES) {
-	const ddbb = {}
-	const readJsonPromises = datafiles.map(async (file) => {
-		try {
-			const fileData = await fs.readFile(`../data/${file}.json`)
-			ddbb[file] = JSON.parse(fileData)
-		} catch (err) {
-			throw new FileError(`No pudo encontrarse el archivo ${err.path}`)
-		}
-	})
-
-	await Promise.all(readJsonPromises)
-	return ddbb
-}
-
-async function iterateFolder() {
-	try {
-		const content = await fs.readdir('../Explotaciones')
-		const files = content.filter((file) => MULTIMEDIA.includes(path.extname(file)))
-		return files
-	} catch (err) {
-		throw new FileError(`No pudo encontrarse el archivo ${err.path}`)
-	}
-}
-
-async function validateAndChangeFileName(files) {
-	const validated = []
-	files.forEach((name) => {
-		const match = name.match(REGEX)
-		if (match) {
-			validated.push(name)
-		} else if (name.startsWith('DUPLICADO')) return
-		else {
-			askValidName(name).then((newName) => {
-				try {
-					fs.rename(`../Explotaciones/${name}`, `../Explotaciones/${newName}`)
-					validated.push(newName)
-				} catch (err) {
-					console.error(err)
-				}
-			})
-		}
-	})
-	return validated
-}
-
-async function askValidName(name) {
-	let newName = String(name)
-	do {
-		newName = question(
-			`La fecha estaba mal ingresada (${pc.red(newName)}).\n` +
-				'Comproba cual es la fecha de la explotacion y escribila siguiendo el formato establecido DDMMMYY.\n' +
-				'FECHA: '
-		)
-	} while (!newName.match(REGEX))
-	if (name.includes('-')) {
-		const [date, ...file] = name.split('-')
-		return `${newName} - ${file.join('').trim()}`
-	} else {
-		return `${newName} - ${name}`
-	}
-}
+import { loadDDBB } from './services/DDBB.js'
+import { iterateFolder } from './controllers/iterators.js'
+import { validateAndChangeFileName } from './models/nameCheckers.js'
 
 async function startApp() {
 	try {
+		question(
+			`${pc.red('IMPORTANTE!:')}\n` + `Asegurate de tener ${pc.green('cerrados todos los PDF y el Excel de Estadisticas')} y presiona Enter`
+		)
+		console.clear()
+
+		console.log('Cargando Base de datos...')
 		const PromiseDdbb = loadDDBB(DATAFILES)
-		const PromiseFiles = iterateFolder()
-		let [ddbb, files] = await Promise.all([PromiseDdbb, PromiseFiles])
-		files = await validateAndChangeFileName(files)
-		//TODO ADD to DDBB, ADD to Cache, Move Files to Folder, ADD TO XLSX
+
+		console.log('Cargando archivos de explotacion...')
+		const PromiseFiles = iterateFolder(MULTIMEDIA)
+		let [_, files] = await Promise.all([PromiseDdbb, PromiseFiles])
+
+		console.log('Controlando nombre y fechas de archivos...')
+		files = await validateAndChangeFileName(files, REGEX)
+
+		//TODO READ PDF, ADD to DDBB, ADD to Cache, Move Files to Folder, ADD TO XLSX
 	} catch (err) {
+		console.error(pc.red('Ha surgido un error y no pudo finalizarse la carga'))
 		console.error(err)
 	}
 }

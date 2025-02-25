@@ -11,6 +11,8 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"pdf-parse": "^1.1.1",
+		"pdfjs-dist": "3.11.174",
 		"picocolors": "^1.1.1",
 		"readline-sync": "^1.4.10"
 	}

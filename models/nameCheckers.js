@@ -1,6 +1,6 @@
 import pc from 'picocolors'
 
-export async function validateAndChangeFileName(files) {
+export async function validateAndChangeFilesNames(files, REGEX) {
 	const validated = []
 	files.forEach((name) => {
 		const match = name.match(REGEX)
@@ -19,6 +19,22 @@ export async function validateAndChangeFileName(files) {
 		}
 	})
 	return validated
+}
+export async function validateAndChangeFileName(name, REGEX) {
+	const match = name.match(REGEX)
+	if (match) {
+		return name
+	} else if (name.startsWith('DUPLICADO')) return
+	else {
+		askValidName(name, REGEX).then((newName) => {
+			try {
+				fs.rename(`../Explotaciones/${name}`, `../Explotaciones/${newName}`)
+				return newName
+			} catch (err) {
+				console.error(err)
+			}
+		})
+	}
 }
 
 async function askValidName(name, REGEX) {

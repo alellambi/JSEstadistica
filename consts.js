@@ -1,17 +1,19 @@
 export const DATAFILES = ['Fb', 'Tw', 'Ig', 'Web', 'Total']
 export const IGNORE = ['Agregados a Estadistica', 'Thumbs.db', 'desktop.ini', '.gitignore']
 export const SOURCES = {
-	Facebook:
-		(' https://www.facebook.com/',
+	Facebook: [
+		' https://www.facebook.com/',
 		'https://www.facebook.com/',
 		' https://m.facebook.com/',
 		'http://m.facebook.com/',
 		'https://facebook.com/',
 		' https://facebook.com/',
 		'facebook.com',
-		'https://web.facebook.com/'),
-	Twitter:
-		(' https://www.twitter.com/',
+		'https://web.facebook.com/',
+		'facebook',
+	],
+	Twitter: [
+		' https://www.twitter.com/',
 		'https://www.twitter.com/',
 		' https://m.twitter.com/',
 		'http://m.twitter.com/',
@@ -20,14 +22,19 @@ export const SOURCES = {
 		'twitter.com/',
 		'https://mobile.twitter.com',
 		'http://mobile.twitter.com',
-		'https://x.com'),
-	Instagram:
-		(' https://www.instagram.com/',
+		'https://x.com',
+		'twitter',
+		'x',
+	],
+	Instagram: [
+		' https://www.instagram.com/',
 		'https://www.instagram.com/',
 		' https://m.instagram.com/',
 		'http://m.instagram.com/',
 		'https://instagram.com/',
-		' https://instagram.com/'),
+		' https://instagram.com/',
+		'instagram',
+	],
 }
 export const MONTHS = {
 	ENE: ['Enero', '01'],

@@ -6,7 +6,7 @@ import { DATAFILES, IGNORE, SOURCES, MONTHS, MULTIMEDIA, REGEX } from './consts.
 import { loadDDBB } from './services/DDBB.js'
 import { iterateFolder } from './controllers/iterators.js'
 import { validateAndChangeFileName } from './models/nameCheckers.js'
-import { readPDF, getSource, getDate } from './services/PDF.js'
+import { readPDF, getSource as getSourceURL, getDate } from './services/PDF.js'
 import { saveToCache, readCache, eraseFromCache } from './services/cache.js'
 import { toLog } from './services/log.js'
 
@@ -40,11 +40,14 @@ async function startApp() {
 		for (let file of files) {
 			file = await validateAndChangeFileName(file, REGEX)
 			const date = getDate(file)
-			const pdf = await readPDF(file) // Añadir await aquí
-			const data = await getSource(pdf) // Añadir await aquí
+			const pdf = await readPDF(file)
+			const url = await getSourceURL(pdf)
+			// const {sourceType, source} = await getSource(data)
+
 			const pdfData = {
 				file: file,
-				source: data,
+				sourceType: sourceType,
+				source: source,
 				date: date,
 			}
 			await saveToCache(pdfData)

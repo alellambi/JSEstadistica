@@ -1,53 +1,14 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
 import pc from 'picocolors'
+import fs from 'node:fs/promises'
 import { question } from 'readline-sync'
 
-import pkg from 'pdfjs-dist/legacy/build/pdf.js'
-const { getDocument } = pkg
 import { DATAFILES, IGNORE, SOURCES, MONTHS, MULTIMEDIA, REGEX } from './consts.js'
 import { loadDDBB } from './services/DDBB.js'
 import { iterateFolder } from './controllers/iterators.js'
-import { validateAndChangeFilesNames, validateAndChangeFileName } from './models/nameCheckers.js'
-import { cwd } from 'node:process'
-
-async function readPDF(file, onlyFirstPage = true) {
-	const filePath = path.resolve('..', 'Explotaciones', file)
-
-	try {
-		const dataBuffer = await fs.readFile(filePath)
-		const pdfData = new Uint8Array(dataBuffer)
-		const loadingTask = getDocument({ data: pdfData })
-		const pdf = await loadingTask.promise
-
-		return pdf // 📌 Retorna el pdf
-	} catch (err) {
-		console.error('❌ Error al leer el PDF:', err.message)
-		return null
-	}
-}
-
-// 🔍 Función para extraer la primera "FUENTE: https://..."
-async function getSource(pdf) {
-	const page = await pdf.getPage(1)
-	const annotations = await page.getAnnotations()
-
-	for (const annot of annotations) {
-		if (annot.subtype === 'Link' && annot.url) {
-			return annot.url
-		}
-	}
-	return 'FUENTE NO ENCONTRADA'
-}
-
-function getDate(file) {
-	const match = file.match(/^(.+?)\s*-/)
-	const date = match ? match[1].trim() : null
-	const day = date.slice(0, 2)
-	const month = MONTHS[date.slice(2, 5)][1]
-	const year = date.slice(-2)
-	return `${day}/${month}/20${year}`
-}
+import { validateAndChangeFileName } from './models/nameCheckers.js'
+import { readPDF, getSource, getDate } from './services/PDF.js'
+import { saveToCache, readCache, eraseFromCache } from './services/cache.js'
+import { toLog } from './services/log.js'
 
 async function startApp() {
 	try {
@@ -55,7 +16,19 @@ async function startApp() {
 			`${pc.red('IMPORTANTE!:')}\n` + `Asegurate de tener ${pc.green('cerrados todos los PDF y el Excel de Estadisticas')} y presiona Enter`
 		)
 		console.clear()
-
+		console.log('Revisando Caché...')
+		const cache = await readCache()
+		if (cache.length > 0) {
+			toLog('Se han encontrado archivos en el caché', cache)
+			for (let elem of cache) {
+				//! Aquí se debe cargar a la base de datos
+				console.log(`Guardando ${elem.file} en la base de datos`)
+				eraseFromCache(elem.file).then(() => {
+					console.log(`Eliminando ${elem.file} del caché`)
+				})
+			}
+			toLog('Se han cargado los archivos del caché a la base de datos', `${cache.length} elementos`)
+		}
 		console.log('Cargando Base de datos...')
 		const PromiseDdbb = loadDDBB(DATAFILES)
 
@@ -74,11 +47,14 @@ async function startApp() {
 				source: data,
 				date: date,
 			}
+			await saveToCache(pdfData)
 			console.log(pdfData)
-		}
-		// files = await validateAndChangeFilesNames(files, REGEX)
 
-		//TODO READ PDF, ADD to DDBB, ADD to Cache, Move Files to Folder, ADD TO XLSX
+			//! Cuando ya se cargue a la base de datos, se debe borrar del cache
+			// await eraseFromCache(file)
+		}
+
+		//TODO ADD to DDBB, Move Files to Folder, ADD TO XLSX, Remove from Cache
 	} catch (err) {
 		console.error(pc.red('Ha surgido un error y no pudo finalizarse la carga'))
 		console.error(err)

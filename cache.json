@@ -1,87 +1,233 @@
 [
   {
     "file": "06OCT24 - AVIONES CHILENOS ARG.pdf",
-    "source": "https://twitter.com/Agenda_Malvinas/status/1842953627448558021",
-    "date": "06/10/2024"
+    "url": "https://twitter.com/Agenda_Malvinas/status/1842953627448558021",
+    "date": "06/10/2024",
+    "sourceType": "Twitter",
+    "source": "Agenda_Malvinas"
   },
   {
     "file": "06OCT24 - BELLIBONI LAVADO DINERO.pdf",
-    "source": "https://www.infobae.com/judiciales/2024/10/05/causa-polo-obrero-la-unidad-de-informacion-financiera-acuso-a-belliboni-por-lavado-de-dinero/",
-    "date": "06/10/2024"
+    "url": "https://www.infobae.com/judiciales/2024/10/05/causa-polo-obrero-la-unidad-de-informacion-financiera-acuso-a-belliboni-por-lavado-de-dinero/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
   },
   {
     "file": "06OCT24 - CCC 8OCT.pdf",
-    "source": "https://www.facebook.com/permalink.php?story_fbid=pfbid031zmhaVYLuNbAWKAi8bk2hd8G7CgSwSymqhfXcstkTdLumixonATFeGc4Q2stb2PFl&id=100067904332891",
-    "date": "06/10/2024"
+    "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid031zmhaVYLuNbAWKAi8bk2hd8G7CgSwSymqhfXcstkTdLumixonATFeGc4Q2stb2PFl&id=100067904332891",
+    "date": "06/10/2024",
+    "sourceType": "Facebook",
+    "source": "100067904332891"
   },
   {
     "file": "06OCT24 - ESTACION VILLA CRESPO 08OCT.pdf",
-    "source": "https://www.instagram.com/stories/asambleapaternal/",
-    "date": "06/10/2024"
+    "url": "https://www.instagram.com/stories/asambleapaternal/",
+    "date": "06/10/2024",
+    "sourceType": "Instagram",
+    "source": "asambleapaternal"
   },
   {
     "file": "06OCT24 - HOSP BONAPARTE 07OCT.pdf",
-    "source": "https://www.instagram.com/asambleacaba/",
-    "date": "06/10/2024"
+    "url": "https://www.instagram.com/asambleacaba/",
+    "date": "06/10/2024",
+    "sourceType": "Instagram",
+    "source": "asambleacaba"
   },
   {
     "file": "06OCT24 - INFORME NARCO GRAN BS AS COMANDANTE CANO.pdf",
-    "source": "https://www.lanacion.com.ar/seguridad/adn-del-crimen-una-descontrolada-guerra-entre-bandas-del-conurbano-dejo-un-rastro-de-16-muertes-en-nid06102024/",
-    "date": "06/10/2024"
+    "url": "https://www.lanacion.com.ar/seguridad/adn-del-crimen-una-descontrolada-guerra-entre-bandas-del-conurbano-dejo-un-rastro-de-16-muertes-en-nid06102024/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "lanacion"
   },
   {
     "file": "06OCT24 - INVESTIGACION POLO OBRERO.pdf",
-    "source": "https://www.infobae.com/politica/2024/10/06/la-causa-del-polo-obrero-avanza-sobre-la-ruta-del-dinero-investigan-a-una-sociedad-y-a-varias-cooperativas/",
-    "date": "06/10/2024"
+    "url": "https://www.infobae.com/politica/2024/10/06/la-causa-del-polo-obrero-avanza-sobre-la-ruta-del-dinero-investigan-a-una-sociedad-y-a-varias-cooperativas/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
   },
   {
     "file": "06OCT24 - MAS GENDARMES DETENIDOS COIMAS JUJUY Y TUCUMAN.pdf",
-    "source": "https://www.perfil.com/noticias/policia/escandalo-por-la-pyme-de-los-gendarmes-detectan-otro-escuadron-que-cobraba-coimas.phtml",
-    "date": "06/10/2024"
+    "url": "https://www.perfil.com/noticias/policia/escandalo-por-la-pyme-de-los-gendarmes-detectan-otro-escuadron-que-cobraba-coimas.phtml",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "perfil"
   },
   {
     "file": "06OCT24 - OPERATIVO DE SATURACION SINCRONIZADA.pdf",
-    "source": "https://www.diariocastellanos.com.ar/sucesos/la-policia-federal-argentina-llevo-a-cabo-un-operativo-de-saturacion-sincronizada-en-rutas-terminales-y-accesos-a-grandes-urbes-de-todo-el-pais.htm",
-    "date": "06/10/2024"
+    "url": "https://www.diariocastellanos.com.ar/sucesos/la-policia-federal-argentina-llevo-a-cabo-un-operativo-de-saturacion-sincronizada-en-rutas-terminales-y-accesos-a-grandes-urbes-de-todo-el-pais.htm",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "diariocastellanos"
   },
   {
     "file": "06OCT24 - POLAQUITO DETENIDO.pdf",
-    "source": "https://www.infobae.com/sociedad/policiales/2024/10/06/cayo-el-polaquito-de-don-orione-el-jefe-de-soldaditos-narco-que-custodiaba-un-bunker-con-puntos-de-defensa/",
-    "date": "06/10/2024"
+    "url": "https://www.infobae.com/sociedad/policiales/2024/10/06/cayo-el-polaquito-de-don-orione-el-jefe-de-soldaditos-narco-que-custodiaba-un-bunker-con-puntos-de-defensa/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
   },
   {
     "file": "06OCT24 - RECLAMO CONDENAS 2001.pdf",
-    "source": "https://www.lanacion.com.ar/opinion/carta-de-lectores/cartas-de-lectores-universidad-publica-por-un-debate-responsable-experiencia-en-eeuu-companias-nid06102024/",
-    "date": "06/10/2024"
+    "url": "https://www.lanacion.com.ar/opinion/carta-de-lectores/cartas-de-lectores-universidad-publica-por-un-debate-responsable-experiencia-en-eeuu-companias-nid06102024/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "lanacion"
   },
   {
     "file": "06OCT24 - SEDES IOMA 23OCT.pdf",
-    "source": "https://www.facebook.com/ArgentinaDespega/posts/pfbid0ha3QvQc1JqEHtX6itmMiKDU8cCPNztEmWFnpsXJyUrd42b4WBVpT2yBoFw7XiZTJl",
-    "date": "06/10/2024"
+    "url": "https://www.facebook.com/ArgentinaDespega/posts/pfbid0ha3QvQc1JqEHtX6itmMiKDU8cCPNztEmWFnpsXJyUrd42b4WBVpT2yBoFw7XiZTJl",
+    "date": "06/10/2024",
+    "sourceType": "Facebook",
+    "source": "ArgentinaDespega"
   },
   {
     "file": "06OCT24 - TW DETENCION AMENAZAS.pdf",
-    "source": "https://twitter.com/HernanFunes/status/1842972878909866455",
-    "date": "06/10/2024"
+    "url": "https://twitter.com/HernanFunes/status/1842972878909866455",
+    "date": "06/10/2024",
+    "sourceType": "Twitter",
+    "source": "HernanFunes"
   },
   {
     "file": "07SEP24 - APPA LA PLATA.pdf",
-    "source": "https://www.facebook.com/permalink.php?story_fbid=pfbid022CzDwvAaN9sXsqRw2yppSreWMN5LU2sBTyej1XhtCVGakvsaS7umrKw5Ssff2PH5l&id=100085895224095",
-    "date": "07/09/2024"
+    "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid022CzDwvAaN9sXsqRw2yppSreWMN5LU2sBTyej1XhtCVGakvsaS7umrKw5Ssff2PH5l&id=100085895224095",
+    "date": "07/09/2024",
+    "sourceType": "Facebook",
+    "source": "100085895224095"
   },
   {
     "file": "07SEP24 - BULLRICH ATENTADO RURAL.pdf",
-    "source": "https://www.infobae.com/sociedad/policiales/2024/09/07/patricia-bullrich-afirmo-que-el-ataque-en-la-sociedad-rural-fue-un-atentado-y-dijo-que-en-%20las-proximas-horas-habra-novedades-en-la-investigacion/",
-    "date": "07/09/2024"
-  },
-  {
-    "file": "07SEP24 - BULLRICH DOMINGO.pdf",
-    "source": "https://www.instagram.com/patobullrich/",
-    "date": "07/09/2024"
+    "url": "https://www.infobae.com/sociedad/policiales/2024/09/07/patricia-bullrich-afirmo-que-el-ataque-en-la-sociedad-rural-fue-un-atentado-y-dijo-que-en-%20las-proximas-horas-habra-novedades-en-la-investigacion/",
+    "date": "07/09/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
   },
   {
     "file": "07SEP24 - DETENIDO ATENTADO.pdf",
-    "source": "https://twitter.com/tunykollmann/status/1832425462724800978",
-    "date": "07/09/2024"
+    "url": "https://twitter.com/tunykollmann/status/1832425462724800978",
+    "date": "07/09/2024",
+    "sourceType": "Twitter",
+    "source": "tunykollmann"
+  },
+  {
+    "file": "06OCT24 - AVIONES CHILENOS ARG.pdf",
+    "url": "https://twitter.com/Agenda_Malvinas/status/1842953627448558021",
+    "date": "06/10/2024",
+    "sourceType": "Twitter",
+    "source": "Agenda_Malvinas"
+  },
+  {
+    "file": "06OCT24 - BELLIBONI LAVADO DINERO.pdf",
+    "url": "https://www.infobae.com/judiciales/2024/10/05/causa-polo-obrero-la-unidad-de-informacion-financiera-acuso-a-belliboni-por-lavado-de-dinero/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
+  },
+  {
+    "file": "06OCT24 - CCC 8OCT.pdf",
+    "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid031zmhaVYLuNbAWKAi8bk2hd8G7CgSwSymqhfXcstkTdLumixonATFeGc4Q2stb2PFl&id=100067904332891",
+    "date": "06/10/2024",
+    "sourceType": "Facebook",
+    "source": "100067904332891"
+  },
+  {
+    "file": "06OCT24 - ESTACION VILLA CRESPO 08OCT.pdf",
+    "url": "https://www.instagram.com/stories/asambleapaternal/",
+    "date": "06/10/2024",
+    "sourceType": "Instagram",
+    "source": "asambleapaternal"
+  },
+  {
+    "file": "06OCT24 - HOSP BONAPARTE 07OCT.pdf",
+    "url": "https://www.instagram.com/asambleacaba/",
+    "date": "06/10/2024",
+    "sourceType": "Instagram",
+    "source": "asambleacaba"
+  },
+  {
+    "file": "06OCT24 - INFORME NARCO GRAN BS AS COMANDANTE CANO.pdf",
+    "url": "https://www.lanacion.com.ar/seguridad/adn-del-crimen-una-descontrolada-guerra-entre-bandas-del-conurbano-dejo-un-rastro-de-16-muertes-en-nid06102024/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "lanacion"
+  },
+  {
+    "file": "06OCT24 - INVESTIGACION POLO OBRERO.pdf",
+    "url": "https://www.infobae.com/politica/2024/10/06/la-causa-del-polo-obrero-avanza-sobre-la-ruta-del-dinero-investigan-a-una-sociedad-y-a-varias-cooperativas/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
+  },
+  {
+    "file": "06OCT24 - MAS GENDARMES DETENIDOS COIMAS JUJUY Y TUCUMAN.pdf",
+    "url": "https://www.perfil.com/noticias/policia/escandalo-por-la-pyme-de-los-gendarmes-detectan-otro-escuadron-que-cobraba-coimas.phtml",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "perfil"
+  },
+  {
+    "file": "06OCT24 - OPERATIVO DE SATURACION SINCRONIZADA.pdf",
+    "url": "https://www.diariocastellanos.com.ar/sucesos/la-policia-federal-argentina-llevo-a-cabo-un-operativo-de-saturacion-sincronizada-en-rutas-terminales-y-accesos-a-grandes-urbes-de-todo-el-pais.htm",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "diariocastellanos"
+  },
+  {
+    "file": "06OCT24 - POLAQUITO DETENIDO.pdf",
+    "url": "https://www.infobae.com/sociedad/policiales/2024/10/06/cayo-el-polaquito-de-don-orione-el-jefe-de-soldaditos-narco-que-custodiaba-un-bunker-con-puntos-de-defensa/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
+  },
+  {
+    "file": "06OCT24 - RECLAMO CONDENAS 2001.pdf",
+    "url": "https://www.lanacion.com.ar/opinion/carta-de-lectores/cartas-de-lectores-universidad-publica-por-un-debate-responsable-experiencia-en-eeuu-companias-nid06102024/",
+    "date": "06/10/2024",
+    "sourceType": "Medios",
+    "source": "lanacion"
+  },
+  {
+    "file": "06OCT24 - SEDES IOMA 23OCT.pdf",
+    "url": "https://www.facebook.com/ArgentinaDespega/posts/pfbid0ha3QvQc1JqEHtX6itmMiKDU8cCPNztEmWFnpsXJyUrd42b4WBVpT2yBoFw7XiZTJl",
+    "date": "06/10/2024",
+    "sourceType": "Facebook",
+    "source": "ArgentinaDespega"
+  },
+  {
+    "file": "06OCT24 - TW DETENCION AMENAZAS.pdf",
+    "url": "https://twitter.com/HernanFunes/status/1842972878909866455",
+    "date": "06/10/2024",
+    "sourceType": "Twitter",
+    "source": "HernanFunes"
+  },
+  {
+    "file": "07SEP24 - APPA LA PLATA.pdf",
+    "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid022CzDwvAaN9sXsqRw2yppSreWMN5LU2sBTyej1XhtCVGakvsaS7umrKw5Ssff2PH5l&id=100085895224095",
+    "date": "07/09/2024",
+    "sourceType": "Facebook",
+    "source": "100085895224095"
+  },
+  {
+    "file": "07SEP24 - BULLRICH ATENTADO RURAL.pdf",
+    "url": "https://www.infobae.com/sociedad/policiales/2024/09/07/patricia-bullrich-afirmo-que-el-ataque-en-la-sociedad-rural-fue-un-atentado-y-dijo-que-en-%20las-proximas-horas-habra-novedades-en-la-investigacion/",
+    "date": "07/09/2024",
+    "sourceType": "Medios",
+    "source": "infobae"
+  },
+  {
+    "file": "07SEP24 - BULLRICH DOMINGO.pdf",
+    "url": "https://www.instagram.com/patobullrich/",
+    "date": "07/09/2024",
+    "sourceType": "Instagram",
+    "source": "patobullrich"
+  },
+  {
+    "file": "07SEP24 - DETENIDO ATENTADO.pdf",
+    "url": "https://twitter.com/tunykollmann/status/1832425462724800978",
+    "date": "07/09/2024",
+    "sourceType": "Twitter",
+    "source": "tunykollmann"
   }
 ]

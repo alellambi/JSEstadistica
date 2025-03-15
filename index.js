@@ -6,9 +6,10 @@ import { DATAFILES, IGNORE, SOURCES, MONTHS, MULTIMEDIA, REGEX } from './consts.
 import { loadDDBB } from './services/DDBB.js'
 import { iterateFolder } from './controllers/iterators.js'
 import { validateAndChangeFileName } from './models/nameCheckers.js'
-import { readPDF, getSource as getSourceURL, getDate } from './services/PDF.js'
+import { readPDF, getURL as getURL, getDate } from './services/PDF.js'
 import { saveToCache, readCache, eraseFromCache } from './services/cache.js'
 import { toLog } from './services/log.js'
+import { getSource } from './services/sources.js'
 
 async function startApp() {
 	try {
@@ -41,17 +42,18 @@ async function startApp() {
 			file = await validateAndChangeFileName(file, REGEX)
 			const date = getDate(file)
 			const pdf = await readPDF(file)
-			const url = await getSourceURL(pdf)
-			// const {sourceType, source} = await getSource(data)
+			const url = await getURL(pdf)
+			const { sourceType, source } = await getSource(url)
 
 			const pdfData = {
-				file: file,
-				sourceType: sourceType,
-				source: source,
-				date: date,
+				file,
+				url,
+				date,
+				sourceType,
+				source,
 			}
 			await saveToCache(pdfData)
-			console.log(pdfData)
+			// console.log(pdfData)
 
 			//! Cuando ya se cargue a la base de datos, se debe borrar del cache
 			// await eraseFromCache(file)
@@ -64,4 +66,5 @@ async function startApp() {
 	}
 }
 
-startApp()
+console.log(`Node.js version: ${process.version}`)
+await startApp()

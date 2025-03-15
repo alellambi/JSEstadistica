@@ -1,4 +1,5 @@
 import { SOURCES } from '../consts.js'
+import { handlers } from './links.js'
 
 export async function getSource(url) {
 	let domain = await classifySource(url)
@@ -6,13 +7,15 @@ export async function getSource(url) {
 	console.log(domain)
 	for (const src in SOURCES) {
 		if (SOURCES[src].includes(domain)) {
-			sourceType = src
+			sourceType = src ?? undefined
 			break
 		}
 	}
 	if (!sourceType) {
 		source = domain
 		sourceType = 'Medios'
+	} else {
+		source = await getUser(url, sourceType)
 	}
 
 	return { sourceType, source }
@@ -24,9 +27,14 @@ async function classifySource(url) {
 }
 
 async function getUser(url, sourceType) {
-	if (sourceType === 'Twitter') {
-		return url.match(/https?:\/\/(?:www\.)?twitter\.com\/([^\/?]+)/)[1]
-	}
+	const handler = handlers[sourceType]
+	if (!handler) return undefined
+	const match = url.match(/https?:\/\/(?:www\.)?[^\/]+\/([^\/]+)(?:\/([^\/]+))?/)
+	if (!match) return undefined
+	const user = await handler(url, match)
+	console.log('\t', url)
+	console.log('\t', user)
+	return user
 }
 
 console.log(
@@ -34,10 +42,10 @@ console.log(
 		'https://www.infobae.com/judiciales/2024/10/05/causa-polo-obrero-la-unidad-de-informacion-financiera-acuso-a-belliboni-por-lavado-de-dinero/'
 	)
 )
+console.log(await getSource('https://www.facebook.com/photo/?fbid=10234958116429696&set=gm.28764994099814191&idorvanity=297705810303067'))
+console.log(await getSource('https://www.facebook.com/reel/1162692718744228'))
 console.log(
-	await getSource(
-		'https://www.facebook.com/permalink.php?story_fbid=pfbid031zmhaVYLuNbAWKAi8bk2hd8G7CgSwSymqhfXcstkTdLumixonATFeGc4Q2stb2PFl&id=100067904332891'
-	)
+	await getSource('https://www.facebook.com/stories/101197508717011/UzpfSVNDOjY4MTAwNTg1NzgyOTA3Mg==/?bucket_count=9&source=story_tray')
 )
 console.log(await getSource('https://www.instagram.com/stories/asambleapaternal/'))
-console.log(await getSource('https://www.twitter.com/AsambleaPaternal/status/1445748722824334336'))
+console.log(await getSource('https://www.instagram.com/p/DHO8FfwvQGP/'))

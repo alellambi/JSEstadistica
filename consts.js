@@ -53,3 +53,10 @@ export const MONTHS = {
 export const MULTIMEDIA = ['.pdf', '.jpeg', '.jpg', '.m4v', '.mp4', '.mp3', '.png', '.wav', '.wma', '.mpeg', '.ogg', '.mkv']
 export const YEAR = new Date().getFullYear().toString().slice(-2)
 export const REGEX = new RegExp(`^(0[1-9]|[12][0-9]|3[01])(${Object.keys(MONTHS).join('|')})(?:${YEAR}|${YEAR - 1})(\\s*-+)?`, 'i')
+
+export const REGEX_URL = {
+	Twitter: /https?:\/\/(?:www\.)?[^\/]+\/([^\/]+)(?:\/([^\/]+))?/,
+	Instagram: /https?:\/\/(?:www\.)?[^\/]+\/([^\/]+)(?:\/([^\/]+))?/,
+	Facebook: [/&id=(\d+)/, /https?:\/\/(?:www\.)?[^\/]+\/([^\/]+)(?:\/([^\/]+))?/],
+	TikTok: /https?:\/\/(?:www\.)?[^\/]+\/([^\/]+)(?:\/([^\/]+))?/,
+}

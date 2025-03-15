@@ -22,7 +22,7 @@ export async function readPDF(file) {
 }
 
 // 🔍 Función para extraer la primera "FUENTE: https://..."
-export async function getSource(pdf) {
+export async function getURL(pdf) {
 	const page = await pdf.getPage(1)
 	const annotations = await page.getAnnotations()
 

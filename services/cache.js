@@ -1,10 +1,12 @@
 import pc from 'picocolors'
 import fs from 'node:fs/promises'
+const file = 'cache.json'
 
 export async function saveToCache(pdfData) {
 	try {
 		let cache = []
 		try {
+			await ensureFileExists(file)
 			const data = await fs.readFile('cache.json', 'utf-8')
 			cache = JSON.parse(data)
 		} catch (err) {
@@ -19,12 +21,28 @@ export async function saveToCache(pdfData) {
 	}
 }
 
-export async function readCache() {
+async function ensureFileExists(file) {
 	try {
-		const data = await fs.readFile('cache.json', 'utf-8')
+		await fs.access(file)
+	} catch (err) {
+		// El archivo no existe, así que lo creamos
+		await fs.writeFile(file, '[]')
+		console.log(`Archivo ${file} creado`)
+	}
+}
+
+export async function readCache() {
+	const file = 'cache.json'
+	try {
+		await ensureFileExists(file)
+		let data = await fs.readFile(file, 'utf-8')
+		if (data === '') {
+			await fs.writeFile(file, '[]')
+			data = '[]'
+		}
 		return JSON.parse(data)
 	} catch (err) {
-		console.error(pc.red('No se pudo leer el archivo cache.json'))
+		console.error(pc.red(`No se pudo leer el archivo ${file}`))
 		console.error(err)
 	}
 }

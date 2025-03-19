@@ -1,15 +1,12 @@
 import pc from 'picocolors'
-import fs from 'node:fs/promises'
 import { question } from 'readline-sync'
 
-import { DATAFILES, IGNORE, SOURCES, MONTHS, MULTIMEDIA, REGEX } from './consts.js'
-import { loadDDBB } from './services/DDBB.js'
+import { DATAFILES, IGNORE, SOURCES, MONTHS, MULTIMEDIA, REGEX, sourceNames } from './models/consts.js'
+import { evaluateUser, loadDDBB } from './services/DDBB.js'
 import { iterateFolder } from './controllers/iterators.js'
-import { validateAndChangeFileName } from './models/nameCheckers.js'
-import { readPDF, getURL as getURL, getDate } from './services/PDF.js'
-import { saveToCache, readCache, eraseFromCache } from './services/cache.js'
-import { toLog } from './services/log.js'
-import { getSource } from './services/sources.js'
+import { saveToCache } from './services/cache.js'
+import { getFileData } from './services/PDF.js'
+import { reviewCache } from './services/cache.js'
 
 async function startApp() {
 	try {
@@ -17,45 +14,26 @@ async function startApp() {
 			`${pc.red('IMPORTANTE!:')}\n` + `Asegurate de tener ${pc.green('cerrados todos los PDF y el Excel de Estadisticas')} y presiona Enter`
 		)
 		console.clear()
-		console.log('Revisando Caché...')
-		const cache = await readCache()
-		if (cache.length > 0) {
-			toLog('Se han encontrado archivos en el caché', cache)
-			for (let elem of cache) {
-				//! Aquí se debe cargar a la base de datos
-				console.log(`Guardando ${elem.file} en la base de datos`)
-				eraseFromCache(elem.file).then(() => {
-					console.log(`Eliminando ${elem.file} del caché`)
-				})
-			}
-			toLog('Se han cargado los archivos del caché a la base de datos', `${cache.length} elementos`)
-		}
-		console.log('Cargando Base de datos...')
+
+		await reviewCache()
 		const PromiseDdbb = loadDDBB(DATAFILES)
 
-		console.log('Cargando archivos de explotacion...')
 		const PromiseFiles = iterateFolder(MULTIMEDIA)
-		let [_, files] = await Promise.all([PromiseDdbb, PromiseFiles])
+		let [ddbb, files] = await Promise.all([PromiseDdbb, PromiseFiles])
 
 		console.log('Controlando nombre y fechas de archivos...')
 		for (let file of files) {
-			file = await validateAndChangeFileName(file, REGEX)
-			const date = getDate(file)
-			const pdf = await readPDF(file)
-			const url = await getURL(pdf)
-			const { sourceType, source } = await getSource(url)
-
-			const pdfData = {
-				file,
-				url,
-				date,
-				sourceType,
-				source,
-			}
+			const pdfData = await getFileData(file)
 			await saveToCache(pdfData)
 			// console.log(pdfData)
-
+			const user = await evaluateUser({ link: pdfData.url, user: pdfData.source, sourceData: ddbb[sourceNames[pdfData.sourceType]] })
+			const data = {
+				user,
+				...pdfData,
+			}
+			console.log(data)
 			//! Cuando ya se cargue a la base de datos, se debe borrar del cache
+
 			// await eraseFromCache(file)
 		}
 

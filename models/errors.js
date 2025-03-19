@@ -1,4 +1,5 @@
-import { toLog } from './services/log.js'
+import { toLog } from '../services/log.js'
+
 function createErrorFactory(name) {
 	return class BusinessError extends Error {
 		constructor(message) {

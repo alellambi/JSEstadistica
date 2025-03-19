@@ -1,5 +1,7 @@
 import pc from 'picocolors'
 import fs from 'node:fs/promises'
+
+import { toLog } from './log.js'
 const file = 'cache.json'
 
 export async function saveToCache(pdfData) {
@@ -51,4 +53,20 @@ export async function eraseFromCache(file) {
 	const cache = await readCache()
 	const newCache = cache.filter((pdf) => pdf.file !== file)
 	await fs.writeFile('cache.json', JSON.stringify(newCache, null, 2))
+}
+
+export async function reviewCache() {
+	console.log('Revisando Caché...')
+	const cache = await readCache()
+	if (cache.length > 0) {
+		toLog('Se han encontrado archivos en el caché', cache)
+		for (let elem of cache) {
+			//! Aquí se debe cargar a la base de datos
+			console.log(`Guardando ${elem.file} en la base de datos`)
+			eraseFromCache(elem.file).then(() => {
+				console.log(`Eliminando ${elem.file} del caché`)
+			})
+		}
+		toLog('Se han cargado los archivos del caché a la base de datos', `${cache.length} elementos`)
+	}
 }

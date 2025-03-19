@@ -20,6 +20,7 @@ export async function validateAndChangeFilesNames(files, REGEX) {
 	})
 	return validated
 }
+
 export async function validateAndChangeFileName(name, REGEX) {
 	const match = name.match(REGEX)
 	if (match) {
